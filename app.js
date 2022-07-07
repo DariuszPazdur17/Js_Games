@@ -38,10 +38,9 @@ function populateQuestions() {
   questions.forEach((question) => {
     const questionBox = document.createElement("div");
     questionBox.classList.add("question-box");
-    questionDisplay.append(questionBox);
 
     const logoDisplay = document.createElement("h1");
-    logoDisplay.textContent = "-~>";
+    logoDisplay.textContent = "✒";
     questionBox.append(logoDisplay);
 
     question.quiz.forEach((tip) => {
@@ -58,7 +57,6 @@ function populateQuestions() {
       const questionButton = document.createElement("button");
       questionButton.classList.add("question-button");
       questionButton.textContent = option;
-
       questionButton.addEventListener("click", () =>
         checkAnswer(
           questionBox,
@@ -70,12 +68,11 @@ function populateQuestions() {
       );
       questionButtons.append(questionButton);
     });
-
     const answerDisplay = document.createElement("div");
     answerDisplay.classList.add("answer-display");
 
-    questionBox.append(questionButton);
-    questionDisplay.append(answerDisplay);
+    questionBox.append(answerDisplay);
+    questionDisplay.append(questionBox);
   });
 }
 
