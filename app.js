@@ -78,14 +78,30 @@ function populateQuestions() {
 
 populateQuestions();
 
-function checkAnswer(questionButton, option, optionIndex, correctAnswer) {
+function checkAnswer(
+  questionBox,
+  questionButton,
+  option,
+  optionIndex,
+  correctAnswer
+) {
   if (optionIndex === correctAnswer) {
     score++;
     scoreDisplay.textContent = score;
+    addResult(questionBox, "Correct!", "correct");
   } else {
     score--;
     scoreDisplay.textContent = score;
+    addResult(questionBox, "Wrong!", "wrong");
   }
   clicked.push(option);
   questionButton.disabled = clicked.includes(option);
+}
+
+function addResult(questionBox, answer, className) {
+  const answerDisplay = questionBox.querySelector(".answer-display");
+  answerDisplay.classList.remove("wrong");
+  answerDisplay.classList.remove("correct");
+  answerDisplay.classList.add(className);
+  answerDisplay.textContent = answer;
 }
